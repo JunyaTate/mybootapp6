@@ -1,4 +1,4 @@
-package jp.te4a.spring.boot.myapp8.mybootapp8;
+package jp.te4a.spring.boot.myapp9.mybootapp9;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 @Controller
 @RequestMapping("books")
 public class BookController {
     @Autowired
     BookService bookService;
+
     @ModelAttribute
     BookForm setUpForm() {
         return new BookForm();
@@ -48,7 +46,7 @@ public class BookController {
         return "redirect:/books";
     }
     @PostMapping(path = "edit", params = "goToTop")
-        String goToTop() {
+    String goToTop() {
         return "redirect:/books";
     }
 }
