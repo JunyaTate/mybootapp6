@@ -1,4 +1,4 @@
-package jp.te4a.spring.boot.myapp9.mybootapp9;
+package jp.te4a.spring.boot.myapp10.mybootapp10;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +30,10 @@ public class BookController {
         return "redirect:/books";
     }
     @PostMapping(path = "edit", params = "form")
-    String editForm(@RequestParam Integer id, BookForm form) {
+    String editForm(@RequestParam Integer id, BookForm form, Model model) {
         BookForm bookForm = bookService.findOne(id);
         BeanUtils.copyProperties(bookForm, form);
+        model.addAttribute("BookForm", form);
         return "books/edit";
     }
     @PostMapping(path = "edit")

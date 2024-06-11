@@ -1,4 +1,4 @@
-package jp.te4a.spring.boot.myapp9.mybootapp9;
+package jp.te4a.spring.boot.myapp10.mybootapp10;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class BookService {
         bookRepository.save(bookBean);
         return bookForm;
     }
-      
+
     public BookForm update(BookForm bookForm) {
         BookBean bookBean = new BookBean();
         BeanUtils.copyProperties(bookForm, bookBean);
@@ -28,19 +28,25 @@ public class BookService {
     
     public void delete(Integer id) { bookRepository.deleteById(id); }
     public List<BookForm> findAll() {
-    List<BookBean> beanList = bookRepository.findAll();
-    List<BookForm> formList = new ArrayList<BookForm>();
-    for(BookBean bookBean: beanList) {
-    BookForm bookForm = new BookForm();
-    BeanUtils.copyProperties(bookBean, bookForm);
-    formList.add(bookForm);
+        List<BookBean> beanList = bookRepository.findAll();
+        List<BookForm> formList = new ArrayList<BookForm>();
+        for(BookBean bookBean: beanList) {
+            BookForm bookForm = new BookForm();
+            BeanUtils.copyProperties(bookBean, bookForm);
+            formList.add(bookForm);
+            }
+        return formList;
     }
-    return formList;
-    }
+
     public BookForm findOne(Integer id) {
-    Optional<BookBean> bookBean = bookRepository.findById(id);
-    BookForm bookForm = new BookForm();
-    BeanUtils.copyProperties(bookBean, bookForm);
-    return bookForm;
+        Optional<BookBean> optionalBookBean = bookRepository.findById(id);
+        BookForm bookForm = new BookForm();
+        if (optionalBookBean.isPresent()) {
+            BookBean bookBean = optionalBookBean.get();
+            BeanUtils.copyProperties(bookBean, bookForm);
+        } else {
+            // handle the case where the book was not found
+        }
+        return bookForm;
     }
 }
