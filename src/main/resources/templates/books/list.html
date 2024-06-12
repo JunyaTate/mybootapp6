@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <link rel=“stylesheet” type=“text/css” href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
         <meta charset="UTF-8" />
         <title>書籍登録一覧画面</title>
     </head>
     <body>
         <form th:action="@{/books/create}" th:object="${bookForm}" method="post">
-            <table>
+            <table class="table table-striped talbe-bordered table-condensed">
             <tr>
                 <td>タイトル:</td>
                 <td>
