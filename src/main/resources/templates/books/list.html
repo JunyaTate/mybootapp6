@@ -6,6 +6,10 @@
         <title>書籍登録一覧画面</title>
     </head>
     <body>
+        <p>
+            <span sec:authentication="principal.user.username">あなた</span>がログイン中。
+        </p>
+        <form th:action="@{/logout}" method="post"><input type="submit" class="btn btn-defaultbtn-xs" value="ログアウト" /></form>
         <form th:action="@{/books/create}" th:object="${bookForm}" method="post">
             <table class="table table-striped talbe-bordered table-condensed">
             <tr>

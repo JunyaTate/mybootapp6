@@ -1,5 +1,0 @@
-package jp.te4a.spring.boot.myapp12.mybootapp12;
-
-public class TestValiate {
-    
-}
